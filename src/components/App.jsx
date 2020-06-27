@@ -8,9 +8,13 @@ function App() {
   function handleChange(event) {
     const newValue = event.target.value;
     const inputName = event.target.name;
-    // console.log(inputName, newValue);
-    if (inputName === "fName") setFullName({ fname: newValue });
-    else if (inputName === "lName") setFullName({ lname: newValue });
+
+    setFullName(prevValues => {
+      if (inputName === "fName")
+        return { fname: newValue, lname: prevValues.lname };
+      else if (inputName === "lName")
+        return { fname: prevValues.fname, lname: newValue };
+    });
   }
 
   return (
