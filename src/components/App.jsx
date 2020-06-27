@@ -6,14 +6,14 @@ function App() {
     lname: ""
   });
   function handleChange(event) {
-    const newValue = event.target.value;
-    const inputName = event.target.name;
+   
+    const{name,value}=event.target;
 
     setFullName(prevValues => {
-      if (inputName === "fName")
-        return { fname: newValue, lname: prevValues.lname };
-      else if (inputName === "lName")
-        return { fname: prevValues.fname, lname: newValue };
+      if (name === "fName")
+        return { fname: value, lname: prevValues.lname };
+      else if (name === "lName")
+        return { fname: prevValues.fname, lname: value };
     });
   }
 
@@ -27,14 +27,14 @@ function App() {
           onChange={handleChange}
           name="fName"
           placeholder="First Name"
-          // value={fullName.fname}
+          value={fullName.fname}
           autocomplete="off"
         />
         <input
           onChange={handleChange}
           name="lName"
           placeholder="Last Name"
-          // value={fullName.lname}
+          value={fullName.lname}
           autocomplete="off"
         />
         <button>Submit</button>
